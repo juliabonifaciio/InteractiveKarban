@@ -36,4 +36,4 @@ A dynamic, interactive Kanban board for tracking and managing programming study 
 This project is under the MIT license. 
 
 ## Author
-- **Julia Bonifacio** - [juliabonifaciio](https://github.com/juliabonifaciio) #InteractiveKarban
+- **Julia Bonifacio** - [juliabonifaciio](https://github.com/juliabonifaciio)
