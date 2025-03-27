@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+:root {
+    --bg-primary: #2c1f47;
+    --color-primary: #6a5acd;
+    --color-secondary: #8a2be2;
+    --color-accent: #4b0082;
+    --text-primary: #f0f0f0;
+    --white: #ffffff;
+    --priority-high: #ff4d4d;
+    --priority-medium: #ffa500;
+    --priority-low: #4caf50;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+h1 {
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    text-shadow: 0 4px 6px rgba(138, 43, 226, 0.3);
+}
+
+.kanban {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    overflow-x: auto;
+    padding: 0 10px;
+}
+
+.column {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    min-width: 240px;
+    width: calc(20% - 15px);
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    transition: all 0.3s ease;
+}
+
+.task {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: move;
+    user-select: none;
+    transition: all 0.2s ease;
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.task.high-priority {
+    border-left: 4px solid var(--priority-high);
+}
+
+.task.medium-priority {
+    border-left: 4px solid var(--priority-medium);
+}
+
+.task.low-priority {
+    border-left: 4px solid var(--priority-low);
+}
+
+.delete-task {
+    background-color: rgba(255,0,0,0.2);
+    color: red;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    position: absolute;
+    right: 10px;
+}
+
+.task:hover .delete-task {
+    opacity: 1;
+}
+
+.delete-task:hover {
+    background-color: rgba(255,0,0,0.4);
+}
+
+.task:hover {
+    transform: translateX(5px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    background-color: rgba(255,255,255,0.2);
+}
+
+.task.dragging {
+    opacity: 0.7;
+    transform: scale(1.02);
+}
+
+.priority-select {
+    margin-bottom: 15px;
+}
+
+.priority-select label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--white);
+}
+
+.priority-select select {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(255,255,255,0.1);
+    color: #c0c0c0;
+    border: 1px solid var(--color-primary);
+    border-radius: 6px;
+}
+
+.priority-select select:hover {
+    color: #a986ff;
+}
+
+.add-task-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-secondary);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+.add-task-btn:hover {
+    background-color: var(--color-accent);
+}
+
+#taskPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(44, 31, 71, 0.9);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(106, 90, 205, 0.2);
+    z-index: 1000;
+    width: 350px;
+    max-width: 90%;
+    border: 1px solid var(--color-secondary);
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 999;
+}
+
+#taskInput {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-primary);
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: rgba(255,255,255,0.1);
+    color: #c0c0c0;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup-buttons button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.popup-buttons .confirm {
+    background-color: var(--color-primary);
+    color: var(--white);
+}
+
+.popup-buttons .confirm:hover {
+    background-color: var(--color-accent);
+}
+
+.popup-buttons .cancel {
+    background-color: #7b1fa2;
+    color: var(--white);
+}
+
+.popup-buttons .cancel:hover {
+    background-color: #4a148c;
+}

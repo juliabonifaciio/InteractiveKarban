@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban - Estudos de Programação</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kanban - Estudos de Programação</h1>
+        <div class="kanban">
+            <div class="column" id="frontend">
+                <h2>Front-end</h2>
+                <div class="task high-priority" draggable="true">
+                    HTML
+                    <button class="delete-task">×</button>
+                </div>
+                <div class="task high-priority" draggable="true">
+                    CSS
+                    <button class="delete-task">×</button>
+                </div>
+                <div class="task high-priority" draggable="true">
+                    JavaScript
+                    <button class="delete-task">×</button>
+                </div>
+                <div class="task high-priority" draggable="true">
+                    TypeScript
+                    <button class="delete-task">×</button>
+                </div>
+                <div class="task high-priority" draggable="true">
+                    React Native
+                    <button class="delete-task">×</button>
+                </div>
+                <button class="add-task-btn" onclick="openTaskPopup('frontend')">+ Adicionar Tarefa</button>
+            </div>
+            <div class="column" id="backend">
+                <h2>Back-end</h2>
+                <div class="task high-priority" draggable="true">
+                    PHP
+                    <button class="delete-task">×</button>
+                </div>
+                <div class="task high-priority" draggable="true">
+                    Node.js
+                    <button class="delete-task">×</button>
+                </div>
+                <div class="task medium-priority" draggable="true">
+                    Java
+                    <button class="delete-task">×</button>
+                </div>
+                <button class="add-task-btn" onclick="openTaskPopup('backend')">+ Adicionar Tarefa</button>
+            </div>
+            <div class="column" id="database">
+                <h2>Banco de Dados</h2>
+                <div class="task high-priority" draggable="true">
+                    MySQL
+                    <button class="delete-task">×</button>
+                </div>
+                <button class="add-task-btn" onclick="openTaskPopup('database')">+ Adicionar Tarefa</button>
+            </div>
+            <div class="column" id="tools">
+                <h2>Tools</h2>
+                <div class="task high-priority" draggable="true">
+                    Git
+                    <button class="delete-task">×</button>
+                </div>
+                <div class="task high-priority" draggable="true">
+                    GitHub
+                    <button class="delete-task">×</button>
+                </div>
+                <button class="add-task-btn" onclick="openTaskPopup('tools')">+ Adicionar Tarefa</button>
+            </div>
+            <div class="column" id="ai">
+                <h2>Análise de Dados/IA</h2>
+                <div class="task high-priority" draggable="true">
+                    Python
+                    <button class="delete-task">×</button>
+                </div>
+                <button class="add-task-btn" onclick="openTaskPopup('ai')">+ Adicionar Tarefa</button>
+            </div>
+        </div>
+
+        <div id="overlay"></div>
+        <div id="taskPopup">
+            <h3>Adicionar Nova Tarefa</h3>
+            <input type="text" id="taskInput" placeholder="Nome da tarefa">
+            <div class="priority-select">
+                <label>Prioridade:</label>
+                <select id="prioritySelect">
+                    <option value="high">Alta</option>
+                    <option value="medium">Média</option>
+                    <option value="low">Baixa</option>
+                </select>
+            </div>
+            <div class="popup-buttons">
+                <button class="confirm" onclick="addTask()">Adicionar</button>
+                <button class="cancel" onclick="closeTaskPopup()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
