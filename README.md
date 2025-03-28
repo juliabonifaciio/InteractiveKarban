@@ -21,7 +21,6 @@ A dynamic, interactive Kanban board for tracking and managing programming study 
 - HTML
 - CSS
 - JavaScript
-- LocalStorage
 
 ## Installation
 1. Clone the repository
