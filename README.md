@@ -1,7 +1,5 @@
 # Programming Study Kanban Board
 
-![Banner](./github/github-banner.png)
-
 A dynamic, interactive Kanban board for tracking and managing programming study tasks, built with HTML, CSS, and JavaScript.
 
 ## Table of Contents
